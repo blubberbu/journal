@@ -15,7 +15,11 @@ class CreateEntriesTable extends Migration
     {
         Schema::create('entries', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->unsignedBigInteger('user_id');
+            $table->date('created_at');
+            $table->string('title');
+            $table->string('image');
+            $table->longText('body');
         });
     }
 

@@ -19,17 +19,13 @@ class UserSeeder extends Seeder
         $emails = ['admin@example.com', 'joe@example.com'];
         $passwords = [bcrypt('test'), bcrypt('1234')];
         $roles = ['admin', 'member'];
-        $genders = ['Male', 'Male'];
-        $addresses = ['123 Street', 'Joe Street'];
 
         for ($i = 0; $i < count($names); $i++) {
             User::create([
                 'name' => $names[$i],
                 'email' => $emails[$i],
                 'password' => $passwords[$i],
-                'role' => $roles[$i],
-                'gender' => $genders[$i],
-                'address' => $addresses[$i]
+                'role' => $roles[$i]
             ]);
         }
     }

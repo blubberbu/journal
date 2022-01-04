@@ -22,5 +22,9 @@ Route::get('/', function () {
 Route::get('/login', [AuthController::class, 'loginPage'])->name('login');
 Route::post('/login', [AuthController::class, 'login']);
 
-Route::get('/entries', [EntryController::class, 'showEntries']);
+Route::group(['middleware' => ['auth']], function() {
+    Route::get('/entries', [EntryController::class, 'showEntries']);
+    Route::get('/logout', [AuthController::class, 'logout']);
+});
+
 

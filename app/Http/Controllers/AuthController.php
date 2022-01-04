@@ -47,6 +47,6 @@ class AuthController extends Controller
         Auth::logout();
         Session::forget('userSession');
 
-        return redirect('/login');
+        return redirect('/');
     }
 }

@@ -9,6 +9,9 @@
 <body>
     <h2>Entries</h2>
     <div>
+        <a href="/logout"><button>Log out</button></a>
+    </div>
+    <div>
         <a href="/entry"><button>New entry</button></a>
     </div>
     <div>

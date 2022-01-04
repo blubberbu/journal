@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\EntryController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,5 +16,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 });
+
+Route::get('/login', [AuthController::class, 'loginPage'])->name('login');
+Route::post('/login', [AuthController::class, 'login']);
+
+Route::get('/entries', [EntryController::class, 'showEntries']);
+

@@ -17,7 +17,7 @@ class CreateEntriesTable extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->string('title');
-            $table->string('image');
+            $table->string('image')->nullable();
             $table->longText('body');
             $table->timestamps();
 

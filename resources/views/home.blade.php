@@ -21,7 +21,7 @@
             <a href="/logout"><button>Log out</button></a>
         </div>
             <div>
-                <a href="/entry"><button>New entry</button></a>
+                <a href="/new-entry"><button>New entry</button></a>
             </div>
             <div>
                 <a href="/entries"><button>Open Journal</button></a>

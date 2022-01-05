@@ -28,6 +28,8 @@ Route::post('/register', [UserController::class, 'register']);
 
 Route::group(['middleware' => ['auth']], function() {
     Route::get('/entries', [EntryController::class, 'showEntries']);
+    Route::get('/new-entry', [EntryController::class, 'newEntryPage']);
+    Route::post('/new-entry', [EntryController::class, 'newEntry']);
     Route::get('/logout', [AuthController::class, 'logout']);
 });
 

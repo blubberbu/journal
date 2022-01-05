@@ -25,9 +25,8 @@
             <div>
                 <b>TItle:</b> {{ $entry->title }}
             </div>
-            <div>
-                {{ $entry->img }}
-            </div>
+            <img src="{{ Storage::url($entry->image) }}" alt="{{ $entry->title }}">
+
             <div>
                 {{ $entry->body }}
             </div>

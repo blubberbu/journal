@@ -49,7 +49,7 @@ class EntryController extends Controller
 
         $entry->body = $request->body;
 
-        $entry->save();
+
 
 
         $file = $request->file('image');
@@ -58,6 +58,8 @@ class EntryController extends Controller
         Storage::putFileAs('public/images', $file, $fileName);
 
         $entry->image = 'images/' . $fileName;
+
+        $entry->save();
 
         return redirect('/entries');
     }

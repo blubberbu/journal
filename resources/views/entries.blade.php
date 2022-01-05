@@ -12,24 +12,24 @@
         <a href="/logout"><button>Log out</button></a>
     </div>
     <div>
-        <a href="/entry"><button>New entry</button></a>
+        <a href="/new-entry"><button>New entry</button></a>
     </div>
     <div>
         <h3>{{ $user->name }}'s Journal</h3>
     </div>
-    @foreach ($entries as $i)
+    @foreach ($user->entries as $entry)
         <div>
             <div>
-                <b>Date:</b> {{ $i->created_at }}
+                <b>Date:</b> {{ $entry->created_at }}
             </div>
             <div>
-                <b>TItle:</b> {{ $i->title }}
+                <b>TItle:</b> {{ $entry->title }}
             </div>
             <div>
-                {{ $i->img }}
+                {{ $entry->img }}
             </div>
             <div>
-                {{ $i->body }}
+                {{ $entry->body }}
             </div>
         </div>
 

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\EntryController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,6 +22,9 @@ Route::get('/', function () {
 
 Route::get('/login', [AuthController::class, 'loginPage'])->name('login');
 Route::post('/login', [AuthController::class, 'login']);
+
+Route::get('/register', [UserController::class, 'registerPage']);
+Route::post('/register', [UserController::class, 'register']);
 
 Route::group(['middleware' => ['auth']], function() {
     Route::get('/entries', [EntryController::class, 'showEntries']);

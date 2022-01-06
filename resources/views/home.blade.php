@@ -1,34 +1,48 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Home</title>
-</head>
-<body>
-    <h2>Journal</h2>
-    <div>
-        @guest
-            <p>
-                Please Log in to proceed, Register a new account if you don't have one already
-            </p>
-            <a href="/login"><button>Log in</button></a>
-            <a href="/register"><button>Register</button></a>
-        @endguest
-        @auth
-        <div>
-            <a href="/logout"><button>Log out</button></a>
+@extends('templates.master')
+
+@section('title', 'Home')
+
+@section('css')
+    <link rel="stylesheet" href="{{ URL::asset('stylesheets/home.css') }}">
+@endsection
+
+@section('content')
+    @guest
+        <p id="guest-text">
+            Please <a href="/login">log in</a> or <a href="/register">register</a> to continue.
+        </p>
+    @endguest
+
+    @auth
+        <div id="heading">
+            <h2>
+                Welcome back, {{ $user->name }}!
+            </h2>
+    
+            <a href="/new-entry" id="new-entry">
+                <span class="material-icons-sharp">
+                    add_circle
+                </span>
+                New Entry
+            </a>
         </div>
-            <div>
-                <a href="/new-entry"><button>New entry</button></a>
-            </div>
-            <div>
-                <a href="/entries"><button>Open Journal</button></a>
-            </div>
-        @endauth
 
+        <div id="entry-list">
+            @foreach ($user->entries as $entry)
+                <a href="/entry/{{ $entry->id }}">
+                    <div class="entry-container">
+                        @if ($entry->image)
+                            <img src="{{ Storage::url($entry->image) }}" alt="{{ $entry->title }}">
+                        @endif
+    
+                        <div class="details">
+                            <p class="date">{{ $entry->created_at }}</p>
 
-    </div>
-</body>
-</html>
+                            <h3 class="title">{{ $entry->title }}</h3>
+                        </div>
+                    </div>
+                </a>
+            @endforeach
+        </div>
+    @endauth
+@endsection

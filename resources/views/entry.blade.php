@@ -1,44 +1,45 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>New Entry</title>
-</head>
-<body>
-    <h2>New Entry</h2>
+@extends('templates.master')
 
-    <form action="/new-entry" enctype="multipart/form-data" method="POST" id="add-entry-form" class="form">
-        @csrf
+@section('title', 'Entry')
 
-        <div>
-            <label for="entry-title">Title</label>
-            <input type="text" name="title" id="entry-name">
-        </div>
+@section('css')
+    <link rel="stylesheet" href="{{ URL::asset('stylesheets/entry.css') }}">
+@endsection
 
-        <div>
-            <label for="entry-image">Entry Image</label>
-            <input type="file" name="image" id="entry-image">
-        </div>
+@section('content')
+    <div id="icons">
+        <a href="/" class="icon">
+            <span class="material-icons-sharp">
+                arrow_back
+            </span>
+        </a>
 
-        <div>
-            <label for="entry-body">Body</label>
-            <textarea name="body" id="entry-body"></textarea>
-        </div>
-
-        <button type="submit">Save Entry</button>
-    </form>
-
-    @if ($errors->hasBag('insert'))
-        <div class="error-container">
-            <label for="error" class="error-label">
-                <span class="material-icons-round">
-                    warning
+        <form action="/entry/{{ $entry->id }}" enctype="multipart/form-data" method="POST">
+            @method('DELETE')
+            @csrf
+    
+            <button type="submit" class="icon" id="delete">
+                <span class="material-icons-sharp">
+                    delete
                 </span>
-                {{ $errors->insert->first() }}
-            </label>
+            </button>
+        </form>
+    </div>
+
+    <div id="entry-container">
+        <p id="date">
+            {{ $entry->created_at }}
+        </p>
+    
+        <img src="{{ Storage::url($entry->image) }}" alt="{{ $entry->title }}">
+    
+        <h2 id="title">
+            {{ $entry->title }}
+        </h2>
+
+        <div id="body">
+            {{ $entry->body }}
         </div>
-    @endif
-</body>
-</html>
+    </div>
+
+@endsection

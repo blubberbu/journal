@@ -1,0 +1,68 @@
+.form, .form div {
+    display: flex;
+    flex-direction: column;
+}
+
+.form {
+    align-self: center;
+    width: 75%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form div {
+    width: 100%;
+    margin: 1rem;
+}
+
+.form div label {
+    padding-bottom: 0.5rem;
+}
+
+.form input {
+    padding: 0.5rem;
+}
+
+.form textarea {
+    height: 4rem;
+    resize: none;
+}
+
+.radio-input {
+    display: flex;
+    flex-direction: row !important;
+}
+
+.radio-input div {
+    display: flex;
+    flex-direction: row;
+    margin: 0;
+}
+
+.checkbox-input {
+    margin-right: 0.5rem;
+}
+
+.checkbox-field {
+    flex-direction: row !important;
+    align-items: center;
+}
+
+.checkbox-field label {
+    padding: 0 !important;
+}
+
+.form button {
+    margin-top: 1rem !important;
+    align-self: flex-end;
+}
+
+.error-container {
+    width: 75%;
+    align-self: center;
+}
+
+.error-container label {
+    padding-bottom: 0 !important;
+}

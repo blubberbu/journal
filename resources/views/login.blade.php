@@ -1,17 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Log in</title>
-</head>
-<body>
+@extends('templates.master')
 
-    <div>
-        <h2>Log In</h2>
+@section('title', 'Log In')
 
-    <form action="login" enctype="multipart/form-data" method="POST" id="login-form">
+@section('css')
+    <link rel="stylesheet" href="{{ URL::asset('stylesheets/form.css') }}">
+@endsection
+
+@section('content')
+    <h2>Log In</h2>
+
+    <form action="login" enctype="multipart/form-data" method="POST" id="login-form" class="form">
         @csrf
 
         <div>
@@ -21,11 +19,12 @@
 
         <div>
             <label for="password">Password</label>
-            <input type="password" name="password" id="password" value="{{ Cookie::get('passwordCookie') != null ? Cookie::get('passwordCookie') : '' }}">
+            <input type="password" name="password" id="password"
+                value="{{ Cookie::get('passwordCookie') != null ? Cookie::get('passwordCookie') : '' }}">
         </div>
 
-        <div id="remember-field">
-            <input type="checkbox" name="remember" id="remember" {{ Cookie::get('emailCookie') != null ? 'checked' : '' }}>
+        <div class="checkbox-field">
+            <input type="checkbox" name="remember" id="remember" class="checkbox-input" {{ Cookie::get('emailCookie') != null ? 'checked' : '' }}>
             <label for="remember">Remember Me</label>
         </div>
 
@@ -33,13 +32,13 @@
     </form>
 
     @if ($errors->hasBag('login'))
-        <div class="error-wrapper">
+        <div class="error-container">
             <label for="error" class="error-label">
+                <span class="material-icons-sharp">
+                    warning
+                </span>
                 {{ $errors->login->first() }}
             </label>
         </div>
     @endif
-    </div>
-
-</body>
-</html>
+@endsection

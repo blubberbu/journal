@@ -57,7 +57,7 @@ h2 {
 .entry-container {
     position: relative;
     width: 24rem;
-    height: 8rem;
+    height: 12rem;
     border-radius: 0.25rem;
     background-color: #FFF3EB;
     color: #272B27;
@@ -94,7 +94,7 @@ img {
 
 .title {
     position: absolute;
-    top: 5rem;
+    top: 9rem;
     left: 1rem;
     font-size: 2rem;
 }

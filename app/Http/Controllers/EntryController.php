@@ -12,21 +12,26 @@ use Illuminate\Support\Facades\Validator;
 
 class EntryController extends Controller
 {
-    public function showEntries()
+    public function home()
     {
         $user = User::find(Session::get('userID'));
-        $entry = User::find($user->id);
-        $entries = Entry::find($entry);
+        $entries = $user->entries;
 
-        return view('entries', compact('user', 'entry', 'entries'));
+        return view('home', compact('user', 'entries'));
     }
 
-    public function newEntryPage()
+    public function viewEntry($id) {
+        $entry = Entry::find($id);
+
+        return view('entry', compact('entry'));
+    }
+
+    public function addEntryPage()
     {
-        return view('entry');
+        return view('add-entry');
     }
 
-    public function newEntry(Request $request)
+    public function addEntry(Request $request)
     {
         $rules = [
             'title' => 'required',
@@ -59,6 +64,6 @@ class EntryController extends Controller
 
         $entry->save();
 
-        return redirect('/entries');
+        return redirect('/');
     }
 }

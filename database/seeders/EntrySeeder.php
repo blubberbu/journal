@@ -14,13 +14,18 @@ class EntrySeeder extends Seeder
      */
     public function run()
     {
+        $titles = ['Night in Shibuya', 'Hong Kong Cityscape', 'Shibuya Glitch', 'Swiss Mountain Range', 'Bali Sunset'];
+        $images = ['images/jezael-melgoza-alY6_OpdwRQ-unsplash.jpg', 'images/manson-yim-lYDOrOkR_GU-unsplash.jpg', 'images/Shibuya-glitch.jpg', 'images/etienne-bosiger-WTkUYzNCu-A-unsplash.jpg', 'images/Bali-sunset.jpg'];
+        $bodies = ['Photograph by: Jezael Melgoza (https://unsplash.com/photos/alY6_OpdwRQ)', 'Photograph by: Manson Yim (https://unsplash.com/photos/lYDOrOkR_GU)', 'Photograph by: Darian Jason', 'Photograph by: 
+        Etienne Bösiger (https://unsplash.com/photos/WTkUYzNCu-A)', 'Photograph by: Darian Jason, 100% unedited'];
+
         //dummy data
-        for ($i=0; $i < 10; $i++) { 
+        for ($i=0; $i < count($titles); $i++) { 
             Entry::create([
                 'user_id' => 1,
-                'title' => 'Title',
-                'image' => 'Image path',
-                'body' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum'
+                'title' => $titles[$i],
+                'image' => $images[$i],
+                'body' => $bodies[$i]
             ]);
         }
     }

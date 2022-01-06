@@ -29,9 +29,8 @@ class EntryController extends Controller
     public function newEntry(Request $request)
     {
         $rules = [
-            'title' => 'required|unique:entries|min:5',
-            'image' => 'required|image|mimes:jpg',
-            'body' => 'required|min:50'
+            'title' => 'required',
+            'image' => 'image'
         ];
 
         $validator = Validator::make($request->all(), $rules);
@@ -49,15 +48,14 @@ class EntryController extends Controller
 
         $entry->body = $request->body;
 
-
-
-
+        if (isset($request->image)) {
         $file = $request->file('image');
         $fileName = time() . '-' . $file->getClientOriginalName();
 
         Storage::putFileAs('public/images', $file, $fileName);
 
         $entry->image = 'images/' . $fileName;
+        }
 
         $entry->save();
 

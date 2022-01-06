@@ -17,11 +17,10 @@ class UserController extends Controller
     {
         // validation rules
         $rules = [
-            'name' => 'required|min:5',
+            'name' => 'required',
             'email' => 'required|email|unique:users',
-            'password' => 'required|min:6',
-            'password-confirm' => 'required|same:password',
-            'agreement' => 'required'
+            'password' => 'required|min:8',
+            'password-confirm' => 'required|same:password'
         ];
 
         $validator = Validator::make($request->all(), $rules);

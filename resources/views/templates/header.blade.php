@@ -1,6 +1,6 @@
 <header>
     <h1>
-        <a href="/">Journal</a>
+        <a href="/">Photo Journal</a>
     </h1>
 
     <nav>

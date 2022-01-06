@@ -31,35 +31,41 @@
     flex-flow: column nowrap;
 }
 
-#date {
-    padding-left: 2rem;
-    z-index: 1;
-    font-size: 2rem;
-    font-weight: bold;
-    color: #FFF3EB;
-    text-shadow: 2px 2px 2px #272B27;
-}
-
 img {
     margin-top: -3rem;
     max-height: 32rem;
-    width: 75%;
+    max-width: 75%;
     align-self: center;
     border-radius: 0.25rem;
     object-fit: contain;
 }
 
-#title {
-    padding-right: 2rem;
-    margin-top: -2rem;
+#caption {
+    align-self: center;
+    margin-left: 25%;
+    margin-top: -2.5rem;
+    display: flex;
+    flex-flow: column nowrap;
+}
+
+#date {
     align-self: flex-end;
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: #B9CAC7;
+}
+
+#title {
+    padding-bottom: 1rem;
     z-index: 1;
     font-size: 4rem;
     font-family: 'Yellowtail', cursive;
+    font-weight: normal;
     text-shadow: 2px 2px 2px #272B27;
 }
 
 #body {
+    margin-top: 2rem;
     width: 75%;
     align-self: center;
     line-height: 1.25em;

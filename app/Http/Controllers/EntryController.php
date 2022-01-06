@@ -54,15 +54,28 @@ class EntryController extends Controller
         $entry->body = $request->body;
 
         if (isset($request->image)) {
-        $file = $request->file('image');
-        $fileName = time() . '-' . $file->getClientOriginalName();
-
-        Storage::putFileAs('public/images', $file, $fileName);
-
-        $entry->image = 'images/' . $fileName;
+            $file = $request->file('image');
+            $fileName = time() . '-' . $file->getClientOriginalName();
+    
+            Storage::putFileAs('public/images', $file, $fileName);
+    
+            $entry->image = 'images/' . $fileName;
         }
 
         $entry->save();
+
+        return redirect('/');
+    }
+
+    public function deleteEntry($id)
+    {
+        $entry = Entry::find($id);
+
+        if (isset($entry)) {
+            Storage::delete('public/' . $entry->image);
+            
+            $entry->delete();
+        }
 
         return redirect('/');
     }

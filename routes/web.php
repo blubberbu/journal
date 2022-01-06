@@ -28,5 +28,6 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('/new-entry', [EntryController::class, 'addEntryPage']);
     Route::get('/entry/{id}', [EntryController::class, 'viewEntry']);
     Route::post('/new-entry', [EntryController::class, 'addEntry']);
+    Route::delete('/entry/{id}', [EntryController::class, 'deleteEntry']);
     Route::get('/logout', [AuthController::class, 'logout']);
 });

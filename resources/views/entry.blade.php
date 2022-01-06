@@ -27,15 +27,17 @@
     </div>
 
     <div id="entry-container">
-        <p id="date">
-            {{ $entry->created_at }}
-        </p>
-    
         <img src="{{ Storage::url($entry->image) }}" alt="{{ $entry->title }}">
+        
+        <div id="caption">
+            <h2 id="title">
+                {{ $entry->title }}
+            </h2>
     
-        <h2 id="title">
-            {{ $entry->title }}
-        </h2>
+            <p id="date">
+                {{ $entry->created_at }}
+            </p>
+        </div>
 
         <div id="body">
             {{ $entry->body }}

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
 
@@ -11,9 +12,13 @@ class UserController extends Controller
 {
     public function home()
     {
+        if (Auth::check()) {
             $user = User::find(Session::get('userID'));
             
             return view('home', compact('user'));
+        }
+        
+        return view('guest');
     }
 
     public function registerPage()

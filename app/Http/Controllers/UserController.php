@@ -4,10 +4,18 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller
 {
+    public function home()
+    {
+            $user = User::find(Session::get('userID'));
+            
+            return view('home', compact('user'));
+    }
+
     public function registerPage()
     {
         return view('register');

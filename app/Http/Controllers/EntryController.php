@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Entry;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use App\Models\User;
 use Illuminate\Support\Facades\Storage;
@@ -12,14 +11,6 @@ use Illuminate\Support\Facades\Validator;
 
 class EntryController extends Controller
 {
-    public function home()
-    {
-        $user = User::find(Session::get('userID'));
-        $entries = $user->entries;
-
-        return view('home', compact('user', 'entries'));
-    }
-
     public function viewEntry($id) {
         $entry = Entry::find($id);
 

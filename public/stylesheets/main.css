@@ -54,6 +54,32 @@ li a:hover {
     color: #FFF3EB;
 }
 
+#search-bar {
+    flex-grow: 1;
+    padding: 0 0.5rem;
+    display: flex;
+    align-items: center;
+}
+
+#search-bar input {
+    flex-grow: 1;
+    border: none;
+    border-radius: 2rem;
+    padding-left: 1rem;
+    padding-right: 0.5rem;
+    height: 2.5em;
+}
+
+#search-bar button {
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+}
+
+#search-bar button:hover {
+    color: #FFF3EB;
+}
+
 button, input, textarea, select {
     font-family: 'Poppins', sans-serif;
     padding: 0.5em;

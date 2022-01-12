@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Entry;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
-use App\Models\User;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
@@ -15,6 +15,15 @@ class EntryController extends Controller
         $entry = Entry::find($id);
 
         return view('entry', compact('entry'));
+    }
+
+    public function search(Request $request)
+    {
+        $user = User::find(Session::get('userID'));
+
+        $entries = Entry::where('title', 'like', '%' . $request->search . '%')->get();
+
+        return view('home', compact('user', 'entries'));
     }
 
     public function addEntryPage()

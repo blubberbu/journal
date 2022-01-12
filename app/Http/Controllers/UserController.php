@@ -12,13 +12,15 @@ class UserController extends Controller
 {
     public function home()
     {
-        if (Auth::check()) {
-            $user = User::find(Session::get('userID'));
-            
-            return view('home', compact('user'));
+        $user = User::find(Session::get('userID'));
+        
+        if (!Auth::check() || $user == null) {    
+            return view('guest');
         }
         
-        return view('guest');
+        $entries = $user->entries;
+        
+        return view('home', compact('user', 'entries'));
     }
 
     public function registerPage()

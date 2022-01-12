@@ -21,7 +21,7 @@
     </div>
 
     <div id="entry-list">
-        @foreach ($user->entries as $entry)
+        @foreach ($entries as $entry)
             <a href="/entry/{{ $entry->id }}">
                 <div class="entry-container">
                     @if ($entry->image)

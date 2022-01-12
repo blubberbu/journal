@@ -45,6 +45,10 @@ header nav ul li {
     padding: 0.5rem;
 }
 
+header a, header button {
+    transition: color 0.2s;
+}
+
 a {
     text-decoration: none;
     color: #FFF3EB;
@@ -74,6 +78,7 @@ li a:hover {
     font-size: 1.5rem;
     display: flex;
     align-items: center;
+    padding: 0.25em
 }
 
 #search-bar button:hover {
@@ -92,6 +97,10 @@ button, input, textarea, select {
 button {
    background: none;
    border: none;
+}
+
+button:hover {
+    cursor: pointer;
 }
 
 #content {

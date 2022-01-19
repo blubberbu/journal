@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [EntryController::class, 'home']);
+Route::get('/', [UserController::class, 'home']);
 
 Route::get('/login', [AuthController::class, 'loginPage'])->name('login');
 Route::post('/login', [AuthController::class, 'login']);
@@ -25,7 +25,7 @@ Route::get('/register', [UserController::class, 'registerPage']);
 Route::post('/register', [UserController::class, 'register']);
 
 Route::group(['middleware' => ['auth']], function() {
-    Route::get('/', [EntryController::class, 'search']);
+    Route::get('/search', [EntryController::class, 'search']);
     Route::get('/new-entry', [EntryController::class, 'addEntryPage']);
     Route::get('/entry/{id}', [EntryController::class, 'viewEntry']);
     Route::post('/new-entry', [EntryController::class, 'addEntry']);

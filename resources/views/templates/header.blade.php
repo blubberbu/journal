@@ -16,7 +16,7 @@
             @endguest
 
             @auth
-                <form action="/" method="GET" id="search-bar">
+                <form action="/search" method="GET" id="search-bar">
                     <input type="search" name="search" placeholder="Search" aria-label="Search">
                     <button type="submit">
                         <span class="material-icons-sharp">

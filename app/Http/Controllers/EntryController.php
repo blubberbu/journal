@@ -20,7 +20,6 @@ class EntryController extends Controller
     public function search(Request $request)
     {
         $user = User::find(Session::get('userID'));
-
         $entries = Entry::where('title', 'like', '%' . $request->search . '%')->get();
 
         return view('home', compact('user', 'entries'));
